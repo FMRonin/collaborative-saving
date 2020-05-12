@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { FundComponent } from "./components/fund/fund.component";
+import { MembersComponent } from "./components/members/members.component";
 
-
-const routes: Routes = [];
+const routes: Routes = [
+    { path: 'fondo', component: FundComponent },
+    { path: 'socios', component: MembersComponent },
+    { path: '**', pathMatch: 'full', redirectTo: 'fondo' },
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes, {useHash:true})],
+    exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

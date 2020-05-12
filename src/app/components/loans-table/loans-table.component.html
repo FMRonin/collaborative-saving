@@ -1,0 +1,52 @@
+<!-- Shares Tables -->
+<table mat-table [dataSource]="loans" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Type Column -->
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef> Tipo </th>
+      <td mat-cell *matCellDef="let loan"> {{loan.type}} </td>
+    </ng-container>
+  
+    <!-- Porcentage Column -->
+    <ng-container matColumnDef="pct">
+      <th mat-header-cell *matHeaderCellDef> Porcentaje </th>
+      <td mat-cell *matCellDef="let loan"> {{loan.pct}} </td>
+    </ng-container>
+  
+    <!-- Fee Min Column -->
+    <ng-container matColumnDef="feeMin">
+      <th mat-header-cell *matHeaderCellDef> Cuota Minima </th>
+      <td mat-cell *matCellDef="let loan"> {{loan.feeMin | currency:'COP':'symbol-narrow' }} </td>
+    </ng-container>
+
+    <!-- Fees Number Column -->
+    <ng-container matColumnDef="feeNumber">
+      <th mat-header-cell *matHeaderCellDef> Cuotas Pendientes </th>
+      <td mat-cell *matCellDef="let loan"> {{loan.feeNumber}} </td>
+    </ng-container>
+
+    <!-- Total Fees Column -->
+    <ng-container matColumnDef="feeTotalNumber">
+      <th mat-header-cell *matHeaderCellDef> Total Cuotas </th>
+      <td mat-cell *matCellDef="let loan"> {{loan.feeTotalNumber}} </td>
+    </ng-container>
+
+    <!-- Loan State Column -->
+    <ng-container matColumnDef="loanState">
+      <th mat-header-cell *matHeaderCellDef> Estado Credito </th>
+      <td mat-cell *matCellDef="let loan"> {{ loan.state | loanState }} </td>
+    </ng-container>
+
+    <!-- Fee Min Column -->
+    <ng-container matColumnDef="balance">
+      <th mat-header-cell *matHeaderCellDef> Saldo Credito </th>
+      <td mat-cell *matCellDef="let loan"> {{loan.balance | currency:'COP':'symbol-narrow' }} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <!-- ------------ -->

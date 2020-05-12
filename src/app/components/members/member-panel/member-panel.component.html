@@ -1,0 +1,38 @@
+<mat-accordion>
+    <!-- Shares Panel -->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Acciones
+        </mat-panel-title>
+        <mat-panel-description class="lb-members-description">
+          <mat-label><b>Total: </b><samp>{{ member.shares | currency:'COP':'symbol-narrow' }}</samp></mat-label>  
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-shares-table [member]="member"></app-shares-table>
+    </mat-expansion-panel>
+
+    <!-- Loan Panel -->
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Creditos
+          </mat-panel-title>
+          <mat-panel-description class="lb-members-description">
+            <mat-label><b>Total: </b><samp>{{ member.loans | currency:'COP':'symbol-narrow' }}</samp></mat-label>  
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-loans-table [member]="member"></app-loans-table>
+    </mat-expansion-panel>
+
+    <!-- Other Transactios Panel -->
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Otros
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <app-others-payments-table [member]="member"></app-others-payments-table>
+    </mat-expansion-panel>
+
+ </mat-accordion>
