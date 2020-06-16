@@ -20,6 +20,7 @@ import { SharesTableComponent } from './components/shares-table/shares-table.com
 import { LoansTableComponent } from './components/loans-table/loans-table.component';
 import { LoanStatePipe } from './pipes/loan-state.pipe';
 import { OthersPaymentsTableComponent } from './components/others-payments-table/others-payments-table.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { OthersPaymentsTableComponent } from './components/others-payments-table
     AppRoutingModule,
     FontAwesomeModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

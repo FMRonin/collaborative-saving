@@ -5,9 +5,6 @@
         <mat-panel-title>
           Acciones
         </mat-panel-title>
-        <mat-panel-description class="lb-members-description">
-          <mat-label><b>Total: </b><samp>{{ member.shares | currency:'COP':'symbol-narrow' }}</samp></mat-label>  
-        </mat-panel-description>
       </mat-expansion-panel-header>
       <app-shares-table [member]="member"></app-shares-table>
     </mat-expansion-panel>
@@ -18,9 +15,6 @@
           <mat-panel-title>
             Creditos
           </mat-panel-title>
-          <mat-panel-description class="lb-members-description">
-            <mat-label><b>Total: </b><samp>{{ member.loans | currency:'COP':'symbol-narrow' }}</samp></mat-label>  
-          </mat-panel-description>
         </mat-expansion-panel-header>
         <app-loans-table [member]="member"></app-loans-table>
     </mat-expansion-panel>

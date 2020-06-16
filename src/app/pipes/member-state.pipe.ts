@@ -7,13 +7,13 @@ import { MemberState } from '../enums/member-state.enum';
 export class MemberStatePipe implements PipeTransform {
 
   transform(value: MemberState, ...args: unknown[]): string {
-    if(value==MemberState.already)
+    if(value==MemberState.FREE)
       return "PAZ y SALVO";
-    if(value==MemberState.pending)
+    if(value==MemberState.PENDING)
       return "PENDIENTE";
-    if (value==MemberState.arrear)
+    if (value==MemberState.ARREAR)
       return "EN MORA";
-    if (value==MemberState.retired)
+    if (value==MemberState.RETAIRED)
       return "RETIRADO";
     return null;
   }

@@ -5,41 +5,6 @@ import { Loans } from '../interfaces/loans';
 import { LoanState } from '../enums/loan-state.enum';
 import { OtherPyment } from '../interfaces/other-pyment';
 
-const memberSharesSocio1:Shares[] = [
-  {type: "Grande",  qty: 5, total:100000000},
-  {type: "Mediana", qty: 5, total:100000000},
-  {type: "Pequeña", qty: 5, total:100000000},
-  {type: "Bono",    qty: 5, total:100000000}
-]
-
-const memberSharesSocio2:Shares[] = [
-  {type: "Grande",  qty: 5, total:100000000},
-  {type: "Mediana", qty: 5, total:100000000},
-  {type: "Pequeña", qty: 5, total:100000000},
-  {type: "Bono",    qty: 5, total:100000000}
-]
-
-const memberSharesSocio3:Shares[] = [
-  {type: "Grande",  qty: 5, total:100000000},
-  {type: "Mediana", qty: 5, total:100000000},
-  {type: "Pequeña", qty: 5, total:100000000},
-  {type: "Bono",    qty: 5, total:100000000}
-]
-
-const memberSharesSocio4:Shares[] = [
-  {type: "Grande",  qty: 5, total:100000000},
-  {type: "Mediana", qty: 5, total:100000000},
-  {type: "Pequeña", qty: 5, total:100000000},
-  {type: "Bono",    qty: 5, total:100000000}
-]
-
-const memberSharesSocio5:Shares[] = [
-  {type: "Grande",  qty: 5, total:100000000},
-  {type: "Mediana", qty: 5, total:100000000},
-  {type: "Pequeña", qty: 5, total:100000000},
-  {type: "No Accionaria", qty: 5, total:100000000},
-  {type: "Bono",    qty: 5, total:100000000}
-]
 
 const memberLoansSocio1:Loans[] =[
   {type: "Corriente", pct: 1.5, feeMin:200000, feeNumber: 5, feeTotalNumber: 60, state:LoanState.OUTLAYING, balance:50000000},
@@ -121,21 +86,6 @@ export class MemberService {
   private _memberOtherPyments:OtherPyment[]=[];
 
   constructor() { }
-
-  getShares(member:Member){
-    if(member.name=="Socio Uno")
-      this._memberShares = memberSharesSocio1;
-    else if(member.name=="Socio Dos")
-      this._memberShares = memberSharesSocio2
-    else if(member.name=="Socio Tres")
-      this._memberShares = memberSharesSocio3
-    else if(member.name=="Socio Cuatro")
-      this._memberShares = memberSharesSocio4
-    else if(member.name=="Socio Cinco")
-      this._memberShares = memberSharesSocio5
-    
-    return this._memberShares;
-  }
 
   getLoans(member:Member){
     if(member.name=="Socio Uno")

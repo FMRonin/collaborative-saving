@@ -7,22 +7,25 @@
     <!-- Type Column -->
     <ng-container matColumnDef="type">
       <th mat-header-cell *matHeaderCellDef> Tipo </th>
-      <td mat-cell *matCellDef="let share"> {{share.type}} </td>
+      <td mat-cell *matCellDef="let share"> {{share.name}} </td>
     </ng-container>
   
     <!-- Quantity Column -->
     <ng-container matColumnDef="qty">
       <th mat-header-cell *matHeaderCellDef> Cantidad </th>
-      <td mat-cell *matCellDef="let share"> {{share.qty}} </td>
+      <td mat-cell *matCellDef="let share"> {{share.cnt}} </td>
     </ng-container>
   
     <!-- Total Column -->
     <ng-container matColumnDef="total">
       <th mat-header-cell *matHeaderCellDef> Valor Total </th>
-      <td mat-cell *matCellDef="let share"> {{share.total | currency:'COP':'symbol-narrow' }} </td>
+      <td mat-cell *matCellDef="let share"> {{share.value | currency:'COP':'symbol-narrow' }} </td>
     </ng-container>
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+  <br>
+  <h4>Total Acciones: {{total | currency:'COP':'symbol-narrow' }}</h4>
+
   <!-- ------------ -->

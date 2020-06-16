@@ -1,5 +1,5 @@
 export interface Shares {
-    type:string,
-    qty:number,
-    total:number
+    name:string,
+    cnt:number,
+    value:number
 }

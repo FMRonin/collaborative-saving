@@ -1,0 +1,73 @@
+{
+  "partners": [
+    {
+      "uuid": "52b00586-27c1-42b4-a283-a46e6ccc5ee7",
+      "mail": "jsmith@mail.com",
+      "name": "Jhon Smith",
+      "lastUpdate": 1591837297000,
+      "state": 1030
+    },
+    {
+      "uuid": "87c2d669-b9e7-4ae2-aba1-848d010fde71",
+      "mail": "fmartinez@mail.com",
+      "name": "Fabian Martinez",
+      "lastUpdate": 1591837297000,
+      "state": 1020
+    },
+    {
+      "uuid": "001b847d-fba0-41a4-907d-b96028d9f220",
+      "mail": "jsmith2@mail.com",
+      "name": "Jhon2 Smith",
+      "lastUpdate": 1591837297000,
+      "state": 1030,
+      "id": "W6IF21D"
+    }
+  ],
+  "participations": [
+    {
+      "id":"52b00586-27c1-42b4-a283-a46e6ccc5ee7",
+      "shares": [
+        {
+          "name": "Grande",
+          "cnt": 2,
+          "value":2000000
+        },
+        {
+          "name": "Mediana",
+          "cnt": 6,
+          "value":600000
+        }
+      ]
+    },
+    {
+      "id":"001b847d-fba0-41a4-907d-b96028d9f220",
+      "shares": [
+        {
+          "name": "Grande",
+          "cnt": 2,
+          "value":2000000
+        },
+        {
+          "name": "Mediana",
+          "cnt": 6,
+          "value":600000
+        }
+      ]
+    },
+    {
+      "id":"87c2d669-b9e7-4ae2-aba1-848d010fde71",
+      "shares": [
+        {
+          "name": "Grande",
+          "cnt": 2,
+          "value":2000000
+        },
+        {
+          "name": "Mediana",
+          "cnt": 6,
+          "value":600000
+        }
+      ]
+    }
+  ]
+}

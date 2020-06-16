@@ -15,14 +15,14 @@ import { MemberState } from 'src/app/enums/member-state.enum';
 })
 export class MembersComponent implements OnInit {
 
-  members:Member[] = [];
+  members:any[] = [];
 
   classValidation(member:Member){
-    if(member.state==MemberState.already)
+    if(member.state==MemberState.FREE)
       return {'color-user-state-already':true}
-    if (member.state==MemberState.pending)
+    if (member.state==MemberState.PENDING)
       return {'color-user-state-pending':true}
-    if (member.state==MemberState.arrear)
+    if (member.state==MemberState.ARREAR)
       return {'color-user-state-arrear':true}
   }
 
@@ -46,16 +46,19 @@ export class MembersComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-     (result==true) ? this.members[index].state=MemberState.retired : console.log('Canceled');
+     (result==true) ? this.members[index].state=MemberState.RETAIRED : console.log('Canceled');
     });
   }
 
   isRetired(data_member:Member, index:number){
-    return (data_member.state != MemberState.retired);
+    return (data_member.state != MemberState.RETAIRED);
   }
 
   ngOnInit(): void {
-    this.members = this._membersService.getMembers();
+    this._membersService.getMembers().subscribe((res:any) => {
+      console.log(res)
+      this.members = res
+    })
   }
 
 }
