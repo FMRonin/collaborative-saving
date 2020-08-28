@@ -14,6 +14,8 @@ import { LoanStatePipe } from './pipes/loan-state.pipe';
 
 import { HeaderComponent } from './components/shared/header/header.component';
 import { AccountsStatmentComponent } from './components/accounts-statment/accounts-statment.component';
+import { FundInformationComponent } from './components/fund-information/fund-information.component';
+import { MoneyCollectionComponent } from './components/money-collection/money-collection.component';
 
 
 
@@ -24,6 +26,8 @@ import { AccountsStatmentComponent } from './components/accounts-statment/accoun
     MemberStatePipe,
     LoanStatePipe,
     AccountsStatmentComponent,
+    FundInformationComponent,
+    MoneyCollectionComponent,
   ],
   imports: [
     MaterialModule,

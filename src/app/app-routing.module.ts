@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FundComponent } from "./components/";
-import { MembersComponent } from "./components/members/members.component";
+import { AccountsStatmentComponent } from "./components/accounts-statment/accounts-statment.component";
+import { FundInformationComponent } from "./components/fund-information/fund-information.component";
+import { MoneyCollectionComponent } from "./components/money-collection/money-collection.component"
 
 const routes: Routes = [
-    { path: 'fondo', component: FundComponent },
-    { path: 'socios', component: MembersComponent },
+    { path: 'accounts-statment', component: AccountsStatmentComponent },
+    { path: 'fund-information', component: FundInformationComponent },
+    { path: 'money-collection', component: MoneyCollectionComponent },
     { path: '**', pathMatch: 'full', redirectTo: 'fondo' },
 ];
 
