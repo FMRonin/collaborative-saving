@@ -1,10 +1,9 @@
 <mat-toolbar color="primary">
-    <!--button mat-button (click)="toggleLeft()">
-        <mat-icon class="menu-icon">menu</mat-icon>
-    </button-->
     <span class="txt-logo">Fondo Amigos</span>
+    <a mat-button [routerLink]="['socios']" routerLinkActive="item-selected">Cuentas de Socios</a>
+    <a mat-button [routerLink]="['fondo']" routerLinkActive="item-selected">Datos del Fondo</a>
+    <a mat-button [routerLink]="['fondo']" routerLinkActive="item-selected">Recaudo</a>
     <span class="toolbar-spacer"></span>
-    <span>Usuario Uno</span>
-    <a href="#"><img src="assets/default_user.jpg" alt="USER_IMAGES" class="img-user"></a>
+    <a mat-button href="#"><mat-icon>settings</mat-icon></a>
 </mat-toolbar>
 

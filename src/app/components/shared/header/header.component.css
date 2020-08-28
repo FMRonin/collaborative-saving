@@ -4,9 +4,14 @@
     flex: 1 1 auto;
 }
 
+mat-toolbar {
+    position: relative;
+    z-index: 0;
+}
+
 .txt-logo{
     font-size: 24px;
-    margin-left: 10px;
+    margin: 0px 20px 0px 10px;
 }
 
 .img-user{
