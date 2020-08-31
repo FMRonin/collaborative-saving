@@ -16,11 +16,7 @@ import { HeaderComponent } from './components/shared/header/header.component';
 import { AccountsStatmentComponent } from './components/accounts-statment/accounts-statment.component';
 import { FundInformationComponent } from './components/fund-information/fund-information.component';
 import { MoneyCollectionComponent } from './components/money-collection/money-collection.component';
-import { PartnersListComponent } from './components/accounts-statment/partners-list/partners-list.component';
 import { PartnerComponent } from './components/accounts-statment/partner/partner.component';
-
-import { PartnersService } from './services/partners.service';
-
 
 
 @NgModule({
@@ -32,7 +28,6 @@ import { PartnersService } from './services/partners.service';
     AccountsStatmentComponent,
     FundInformationComponent,
     MoneyCollectionComponent,
-    PartnersListComponent,
     PartnerComponent,
   ],
   imports: [
@@ -44,9 +39,7 @@ import { PartnersService } from './services/partners.service';
     FormsModule,
     HttpClientModule
   ],
-  providers: [
-    PartnersService,
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

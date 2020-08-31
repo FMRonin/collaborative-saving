@@ -1,0 +1,15 @@
+.sidenav-partner{
+    padding: 10px;
+}
+
+.list-parners{
+    padding: 20px;
+}
+
+.content-partner{
+    height: 600px;
+}
+
+.selected-partner{
+    background-color: aqua;
+}

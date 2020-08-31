@@ -24,76 +24,122 @@
             "id":5,
             "name":"HUERFANO DORA",
             "thumbnail":"path"
-        },
-        {
-            "id":6,
-            "name":"LOPEZ GABRIEL"
-        },
-        {
-            "id":7,
-            "name":"LOPEZ AMPARO",
-            "thumbnail":"path"
-        },
-        {
-            "id":8,
-            "name":"GLORIA EMILSE",
-            "thumbnail":"path"
-        },
-        {
-            "id":9,
-            "name":"LOPEZ WILSON",
-            "thumbnail":"path"
-        },
-        {
-            "id":10,
-            "name":"YOLANDA GARZON",
-            "thumbnail":"path"
-        },
-        {
-            "id":11,
-            "name":"MARTHA HURTADO",
-            "thumbnail":"path"
-        },
-        {
-            "id":12,
-            "name":"AURORA VENEGAS",
-            "thumbnail":"path"
-        },
-        {
-            "id":13,
-            "name":"MELIDA HURTADO",
-            "thumbnail":"path"
-        },
-        {
-            "id":14,
-            "name":"ROJAS CARLOS JULIO",
-            "thumbnail":"path"
-        },
-        {
-            "id":15,
-            "name":"CAMILO MONROY",
-            "thumbnail":"path"
-        },
-        {
-            "id":16,
-            "name":"SUAREZ FERNANDO",
-            "thumbnail":"path"
-        },
-        {
-            "id":17,
-            "name":"WILLIAM HERNANDEZ",
-            "thumbnail":"path"
-        },
-        {
-            "id":18,
-            "name":"TRIVIÑO MARTHA",
-            "thumbnail":"path"
-        },
-        {
-            "id":19,
-            "name":"FABIAN MARTINEZ",
-            "thumbnail":"path"
         }
-        
+    ],
+
+    "participations":[
+        {
+            "id":1,
+            "partnerParticipations":[
+                {
+                    "name":"Mediana",
+                    "cnt":1,
+                    "value": 4455500 
+                },
+                {
+                    "name":"Pequeña",
+                    "cnt":5,
+                    "value": 3558000 
+                },
+                {
+                    "name":"Bono Navideño",
+                    "cnt":2,
+                    "value":202000
+                }
+            ]
+        },
+        {
+            "id":2,
+            "partnerParticipations":[
+                {
+                    "name":"Mediana",
+                    "cnt":3,
+                    "value": 13366501
+                },
+                {
+                    "name":"Pequeña",
+                    "cnt":1,
+                    "value": 711600 
+                },
+                {
+                    "name":"Bono Navideño",
+                    "cnt":8,
+                    "value":808000
+                }
+            ]
+        },
+        {
+            "id":3,
+            "partnerParticipations":[
+                {
+                    "name":"Grande",
+                    "cnt":1,
+                    "value":10361400
+                },
+                {
+                    "name":"Bono Navideño",
+                    "cnt":5,
+                    "value":505000
+                }
+            ]
+        },
+        {
+            "id":4,
+            "partnerParticipations":[
+                {
+                    "name":"Grande",
+                    "cnt":1,
+                    "value":10361400
+                },
+                {
+                    "name":"Mediana",
+                    "cnt":1,
+                    "value":10361400
+                },
+                {
+                    "name":"Bono Navideño",
+                    "cnt":1,
+                    "value":101000
+                }
+            ]
+        },
+        {
+            "id":5,
+            "partnerParticipations":[
+                {
+                    "name":"Grande",
+                    "cnt":4,
+                    "value":20722799
+                },
+                {
+                    "name":"Bono Navideño",
+                    "cnt":4,
+                    "value":1111000
+                }
+            ]
+        }
+    ],
+    "loans":[
+        {
+            "id":3,
+            "PartnerLoans":[
+                {
+                    "type":"Corriente",
+                    "interes":1.5,
+                    "saldo":13600000, 
+                    "cuota": "19/33",
+                    "aporte":300000,
+                    "intereses":204000
+                },
+                {
+                    "type":"Agil",
+                    "interes":2.0,
+                    "saldo":1280000, 
+                    "cuota": "1/3",
+                    "aporte":1280000,
+                    "intereses":204000
+                }
+            ]
+        }
     ]
 }

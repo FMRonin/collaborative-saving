@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { PartnersService } from 'src/app/services/partners.service';
+import { Partner } from 'src/app/interfaces/partner';
 
 @Component({
   selector: 'app-accounts-statment',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountsStatmentComponent implements OnInit {
 
-  constructor() { }
+  partners:Partner[]=[];
+  globalPartner:Partner;
+
+  constructor(private _partnersService:PartnersService) { }
 
   ngOnInit(): void {
+    this._partnersService.getPartners()
+    .subscribe(response => {
+      this.partners = response;
+    })
   }
 
 }

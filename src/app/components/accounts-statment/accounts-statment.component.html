@@ -1,8 +1,14 @@
-<mat-drawer-container class="example-container">
-    <mat-drawer mode="side" opened>
-        <app-partners-list></app-partners-list>
+<mat-drawer-container class="sidenav-container" autosize>
+    <mat-drawer mode="side" opened #drawer class="list-partners">
+        <div *ngFor="let partner of partners;">
+            <div class="sidenav-partner"
+            [ngClass]="{'selected-partner': globalPartner === partner}"
+            (click)="globalPartner=partner">
+                <a>{{partner.name | titlecase}}</a>
+            </div>
+        </div>
     </mat-drawer>
-    <mat-drawer-content>
-        <app-partner></app-partner>
+    <mat-drawer-content class="content-partner">
+        <app-partner [partner]="globalPartner"></app-partner>
     </mat-drawer-content>
   </mat-drawer-container>
