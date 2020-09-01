@@ -125,19 +125,17 @@
             "PartnerLoans":[
                 {
                     "type":"Corriente",
-                    "interes":1.5,
-                    "saldo":13600000, 
-                    "cuota": "19/33",
-                    "aporte":300000,
-                    "intereses":204000
+                    "interest":1.5,
+                    "balance":13600000, 
+                    "installments": "19/33",
+                    "fee":300000
                 },
                 {
                     "type":"Agil",
-                    "interes":2.0,
-                    "saldo":1280000, 
-                    "cuota": "1/3",
-                    "aporte":1280000,
-                    "intereses":204000
+                    "interest":2.0,
+                    "balance":1280000, 
+                    "installments": "1/3",
+                    "fee":204000
                 }
             ]
         }

@@ -2,6 +2,8 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { Partner } from 'src/app/interfaces/partner';
 import { ParticipationsService } from 'src/app/services/participations.service';
 import { Participation } from 'src/app/interfaces/participation';
+import { LoansService } from 'src/app/services/loans.service';
+import { Loan } from 'src/app/interfaces/loan';
 
 @Component({
   selector: 'app-partner',
@@ -11,11 +13,15 @@ import { Participation } from 'src/app/interfaces/participation';
 export class PartnerComponent implements OnInit, OnChanges {
 
   @Input() partner:Partner;
-  panelOpenState = true;
+  
   participations:Participation[];
-  displayedColumns: string[] = ['name', 'cnt', 'value'];
+  displayedColumnsParticipations: string[] = ['name', 'cnt', 'value'];
 
-  constructor(private _participationService:ParticipationsService) { }
+  loans:Loan[];
+  displayedColumnsLoans: string[] = ['type','balance','interest','installments','fee','installment'];
+  
+  
+  constructor(private _participationService:ParticipationsService, private _loansService:LoansService) { }
   
   ngOnInit(): void {
   }
@@ -28,11 +34,24 @@ export class PartnerComponent implements OnInit, OnChanges {
               this.participations = response;
           }
         )
+      this._loansService.
+      getLoansForPartner(this.partner.id).
+        subscribe(response => {
+          console.log(response);
+          this.loans = response;
+      }, error => {
+        this.loans = null;
+      })
     }
   }
 
-  getParticipations(){
-
+  getInsterests(loan:Loan){
+    return (loan.balance*loan.interest)/100;
   }
+
+  getTotalInstallment(loan:Loan){
+    return (this.getInsterests(loan)+loan.fee);
+  }
+
 
 }

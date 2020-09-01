@@ -6,3 +6,7 @@
 table {
     width: 100%;
   }
+
+.expansion-panel{
+    margin: 10px 20px;
+}

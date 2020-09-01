@@ -9,6 +9,7 @@ mat-toolbar {
     position: -webkit-sticky; /* For macOS/iOS Safari */
     top: 0; /* Sets the sticky toolbar to be on top */
     z-index: 1000; 
+    height: 10vh;
 }
 
 .txt-logo{
