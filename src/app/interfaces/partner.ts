@@ -1,5 +1,6 @@
 export interface Partner {
-    id?:string,
+    id:string,
     name:string,
-    thumbnail?:string
+    thumbnail?:string,
+    collection?:number
 }

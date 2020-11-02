@@ -13,7 +13,7 @@ export class AccountsStatmentComponent implements OnInit {
   partners:Partner[]=[];
   globalPartner:Partner;
 
-  constructor(private _partnersService:PartnersService) { }
+  constructor(private _partnersService:PartnersService, private _router:Router) { }
 
   ngOnInit(): void {
     this._partnersService.getPartners()

@@ -8,7 +8,7 @@ const routes: Routes = [
     { path: 'accounts-statment', component: AccountsStatmentComponent },
     { path: 'fund-information', component: FundInformationComponent },
     { path: 'money-collection', component: MoneyCollectionComponent },
-    { path: '**', pathMatch: 'full', redirectTo: 'fondo' },
+    { path: '**', pathMatch: 'full', redirectTo: 'fund-information' },
 ];
 
 @NgModule({

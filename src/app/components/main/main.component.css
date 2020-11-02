@@ -1,0 +1,18 @@
+.main-container{
+    margin-top: 20px;
+    height: 100%;
+}
+.menu-icon {
+    padding: 0 14px;
+}
+  
+.header-spacer {
+    flex: 1 1 auto;
+}
+.sidebar-menu{
+    width: 200px;
+}
+
+.header-sidenav a{
+    text-align: left;
+}

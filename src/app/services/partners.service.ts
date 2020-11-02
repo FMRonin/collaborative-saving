@@ -25,6 +25,10 @@ export class PartnersService {
     return this.getQuery('').pipe(map(this.mapResponse));
   }
 
+  getPartner(id:number){
+    return this.getQuery(id.toString()).pipe(map(this.mapPartner))
+  }
+
   private mapResponse(response){
       this.partners = [];
       
@@ -36,5 +40,10 @@ export class PartnersService {
       });
 
       return this.partners;
+  }
+
+  private mapPartner(response){
+    let partner:Partner = response;
+    return partner
   }
 }

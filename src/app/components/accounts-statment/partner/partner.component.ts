@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Partner } from 'src/app/interfaces/partner';
 import { ParticipationsService } from 'src/app/services/participations.service';
 import { Participation } from 'src/app/interfaces/participation';
@@ -10,34 +10,35 @@ import { Loan } from 'src/app/interfaces/loan';
   templateUrl: './partner.component.html',
   styleUrls: ['./partner.component.css']
 })
-export class PartnerComponent implements OnInit, OnChanges {
+export class PartnerComponent implements OnInit {
+
 
   @Input() partner:Partner;
   
   participations:Participation[];
-  displayedColumnsParticipations: string[] = ['name', 'cnt', 'value'];
+  displayedColumnsParticipations: string[] = ['name', 'cnt', 'unitContribution','totalContribution'];
 
   loans:Loan[];
-  displayedColumnsLoans: string[] = ['type','balance','interest','installments','fee','installment'];
+  displayedColumnsLoans: string[] = ['type', 'rate','balance','interest', 'fee','installments','installment'];
   
   
-  constructor(private _participationService:ParticipationsService, private _loansService:LoansService) { }
+  constructor(
+    private _participationService:ParticipationsService, 
+    private _loansService:LoansService) {
+    }
   
   ngOnInit(): void {
   }
 
-  ngOnChanges(): void {
+  getPartnerInformation(){
     if(this.partner!=null){
-      this._participationService.
-      getParticipationsForPartner(this.partner.id).
+      this._participationService.getParticipationsForPartner(this.partner.id).
         subscribe(response => {
-              this.participations = response;
+            this.participations = response;
           }
         )
-      this._loansService.
-      getLoansForPartner(this.partner.id).
+      this._loansService.getLoansForPartner(this.partner.id).
         subscribe(response => {
-          console.log(response);
           this.loans = response;
       }, error => {
         this.loans = null;
@@ -46,12 +47,32 @@ export class PartnerComponent implements OnInit, OnChanges {
   }
 
   getInsterests(loan:Loan){
-    return (loan.balance*loan.interest)/100;
+    return (loan.balance*loan.rate)/100;
   }
 
   getTotalInstallment(loan:Loan){
     return (this.getInsterests(loan)+loan.fee);
   }
 
+  getTotalInstallments(){
+    let totalInstallments:number = 0;
+    if(this.loans == null){return totalInstallments}
+    this.loans.forEach(loan => {
+      totalInstallments += this.getTotalInstallment(loan);
+    });
+    return totalInstallments;
+  }
 
+  getTotalContribution(partisipation:Participation){
+    return (partisipation.cnt*partisipation.unitContribution);
+  }
+
+  getTotalContributions(){
+    let totalContributions:number = 0;
+    if(this.participations == null){return totalContributions}
+    this.participations.forEach(participation =>{
+      totalContributions+=this.getTotalContribution(participation);
+    })
+    return totalContributions;
+  }
 }

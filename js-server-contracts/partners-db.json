@@ -3,27 +3,32 @@
         {
             "id":1,
             "name":"PAOLA NAVARRETE",
-            "thumbnail":"path"
+            "thumbnail":"path",
+            "collection":460000
         },
         {
             "id":2,
             "name":"NORBEY MUÑOZ",
-            "thumbnail":"path"
+            "thumbnail":"path",
+            "collection":640000
         },
         {
             "id":3,
             "name":"DIANA ORTIZ",
-            "thumbnail":"path"
+            "thumbnail":"path",
+            "collection":1043600
         },
         {
             "id":4,
             "name":"IRMA HURTADO",
-            "thumbnail":"path"
+            "thumbnail":"path",
+            "collection":170000
         },
         {
             "id":5,
             "name":"HUERFANO DORA",
-            "thumbnail":"path"
+            "thumbnail":"path",
+            "collection":440000
         }
     ],
 
@@ -34,17 +39,17 @@
                 {
                     "name":"Mediana",
                     "cnt":1,
-                    "value": 4455500 
+                    "unitContribution": 60000 
                 },
                 {
                     "name":"Pequeña",
                     "cnt":5,
-                    "value": 3558000 
+                    "unitContribution": 60000 
                 },
                 {
                     "name":"Bono Navideño",
                     "cnt":2,
-                    "value":202000
+                    "unitContribution": 50000
                 }
             ]
         },
@@ -54,17 +59,17 @@
                 {
                     "name":"Mediana",
                     "cnt":3,
-                    "value": 13366501
+                    "unitContribution": 60000
                 },
                 {
                     "name":"Pequeña",
                     "cnt":1,
-                    "value": 711600 
+                    "unitContribution": 60000 
                 },
                 {
                     "name":"Bono Navideño",
                     "cnt":8,
-                    "value":808000
+                    "unitContribution": 50000
                 }
             ]
         },
@@ -74,12 +79,12 @@
                 {
                     "name":"Grande",
                     "cnt":1,
-                    "value":10361400
+                    "unitContribution": 60000
                 },
                 {
                     "name":"Bono Navideño",
                     "cnt":5,
-                    "value":505000
+                    "unitContribution": 50000
                 }
             ]
         },
@@ -89,17 +94,17 @@
                 {
                     "name":"Grande",
                     "cnt":1,
-                    "value":10361400
+                    "unitContribution": 60000
                 },
                 {
                     "name":"Mediana",
                     "cnt":1,
-                    "value":10361400
+                    "unitContribution": 60000
                 },
                 {
                     "name":"Bono Navideño",
                     "cnt":1,
-                    "value":101000
+                    "unitContribution": 50000
                 }
             ]
         },
@@ -109,12 +114,12 @@
                 {
                     "name":"Grande",
                     "cnt":4,
-                    "value":20722799
+                    "unitContribution": 60000
                 },
                 {
                     "name":"Bono Navideño",
                     "cnt":4,
-                    "value":1111000
+                    "unitContribution": 50000
                 }
             ]
         }
@@ -125,14 +130,14 @@
             "PartnerLoans":[
                 {
                     "type":"Corriente",
-                    "interest":1.5,
+                    "rate":1.5,
                     "balance":13600000, 
                     "installments": "19/33",
                     "fee":300000
                 },
                 {
                     "type":"Agil",
-                    "interest":2.0,
+                    "rate":2.0,
                     "balance":1280000, 
                     "installments": "1/3",
                     "fee":204000

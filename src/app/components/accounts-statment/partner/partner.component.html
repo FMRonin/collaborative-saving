@@ -1,97 +1,104 @@
-<div *ngIf="partner != null" >
-    <h2 class="partner-name">{{partner.name | titlecase}}</h2>
-    <mat-accordion multi>
-        <mat-expansion-panel class="expansion-panel" *ngIf="participations != null">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              Acciones del socio
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <table mat-table [dataSource]="participations" class="mat-elevation-z8">
-
-            <!--- Note that these columns can be defined in any order.
-                  The actual rendered columns are set as a property on the row definition" -->
-          
-            <!-- Type Column -->
-            <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef> Tipo de accion </th>
-              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-            </ng-container>
-          
-            <!-- Cnt Column -->
-            <ng-container matColumnDef="cnt">
-              <th mat-header-cell *matHeaderCellDef> Cantidad </th>
-              <td mat-cell *matCellDef="let element"> {{element.cnt}} </td>
-            </ng-container>
-          
-            <!-- Value Column -->
-            <ng-container matColumnDef="value">
-              <th mat-header-cell *matHeaderCellDef> Valor </th>
-              <td mat-cell *matCellDef="let element"> {{element.value | currency:'COP'}} </td>
-            </ng-container>
-          
-            <tr mat-header-row *matHeaderRowDef="displayedColumnsParticipations"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumnsParticipations;"></tr>
-          </table>
-        </mat-expansion-panel>
-
-        <mat-expansion-panel class="expansion-panel" *ngIf="loans != null">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              Prestamos del socio
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <table mat-table [dataSource]="loans" class="mat-elevation-z8">
-
-            <!--- Note that these columns can be defined in any order.
-                  The actual rendered columns are set as a property on the row definition" -->
-          
-            <!-- Type Column -->
-            <ng-container matColumnDef="type">
-              <th mat-header-cell *matHeaderCellDef> Tipo de prestamo </th>
-              <td mat-cell *matCellDef="let element"> {{element.type}} </td>
-            </ng-container>
-
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="balance">
-              <th mat-header-cell *matHeaderCellDef> Valor </th>
-              <td mat-cell *matCellDef="let element"> {{element.balance | currency:'COP'}} </td>
-            </ng-container>
-          
-            <!-- Name Column -->
-            <ng-container matColumnDef="interest">
-              <th mat-header-cell *matHeaderCellDef> Intereses </th>
-              <td mat-cell *matCellDef="let element"> {{getInsterests(element) | currency:'COP'}} </td>
-            </ng-container>
-
-            <!-- Type Column -->
-            <ng-container matColumnDef="installments">
-              <th mat-header-cell *matHeaderCellDef> Numero de cuotas </th>
-              <td mat-cell *matCellDef="let element"> {{element.installments}} </td>
-            </ng-container>
-          
-            <!-- Name Column -->
-            <ng-container matColumnDef="fee">
-              <th mat-header-cell *matHeaderCellDef> Cuota Minima </th>
-              <td mat-cell *matCellDef="let element"> {{element.fee}} </td>
-            </ng-container>
-          
-            <!-- Name Column -->
-            <ng-container matColumnDef="installment">
-              <th mat-header-cell *matHeaderCellDef> Total Cuota </th>
-              <td mat-cell *matCellDef="let element"> {{getTotalInstallment(element)}} </td>
-            </ng-container>
-          
-            <tr mat-header-row *matHeaderRowDef="displayedColumnsLoans"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumnsLoans;"></tr>
-          </table>
-        </mat-expansion-panel>
-
-
-    </mat-accordion>
-</div>
-
-
-
-
-
+<mat-expansion-panel class="expansion-panel">
+  <mat-expansion-panel-header (click)="getPartnerInformation()">
+      <mat-panel-title>
+        <span class="partner-title">{{partner.id}} - {{partner.name | titlecase}}</span>
+        <span class="partner-spacer"></span>
+        <span class="total-result">Aportes del mes: <span>{{partner.collection | currency:'COP'}}</span></span>
+      </mat-panel-title>
+  </mat-expansion-panel-header>
+  <div class="participation-table" *ngIf="participations!=null">
+    <h2>Acciones del socio</h2>
+    <table mat-table [dataSource]="participations" class="mat-elevation-z8">
+  
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+    
+      <!-- Type Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Tipo de accion </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+    
+      <!-- Cnt Column -->
+      <ng-container matColumnDef="cnt">
+        <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+        <td mat-cell *matCellDef="let element"> {{element.cnt}} </td>
+      </ng-container>
+    
+      <!-- Value Column -->
+      <ng-container matColumnDef="unitContribution">
+        <th mat-header-cell *matHeaderCellDef> Aporte por accion </th>
+        <td mat-cell *matCellDef="let element"> {{element.unitContribution | currency:'COP'}} </td>
+      </ng-container>
+  
+      <!-- Value Column -->
+      <ng-container matColumnDef="totalContribution">
+        <th mat-header-cell *matHeaderCellDef> Total aporte </th>
+        <td mat-cell *matCellDef="let element"> {{ getTotalContribution(element) | currency:'COP'}} </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsParticipations"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsParticipations;"></tr>
+    </table>
+    <h3 class="total-result">Total Aportes por acciones: <span>{{getTotalContributions() | currency:'COP'}}</span></h3>
+  </div>
+  <div class="loan-table" *ngIf="loans!=null">
+    <br>
+    <h2>Prestamos del socio</h2>
+    <table mat-table [dataSource]="loans" class="mat-elevation-z8">
+  
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+    
+      <!-- Type Column -->
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef> Tipo de prestamo </th>
+        <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+      </ng-container>
+  
+      <!-- Type Column -->
+      <ng-container matColumnDef="rate">
+        <th mat-header-cell *matHeaderCellDef> Porcentaje </th>
+        <td mat-cell *matCellDef="let element"> {{element.rate}} </td>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="balance">
+        <th mat-header-cell *matHeaderCellDef> Saldo Prestamo </th>
+        <td mat-cell *matCellDef="let element"> {{element.balance | currency:'COP'}} </td>
+      </ng-container>
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="interest">
+        <th mat-header-cell *matHeaderCellDef> Intereses </th>
+        <td mat-cell *matCellDef="let element"> {{getInsterests(element) | currency:'COP'}} </td>
+      </ng-container>
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="fee">
+        <th mat-header-cell *matHeaderCellDef> Cuota Minima </th>
+        <td mat-cell *matCellDef="let element"> {{element.fee | currency:'COP'}} </td>
+      </ng-container>
+  
+      <!-- Type Column -->
+      <ng-container matColumnDef="installments">
+        <th mat-header-cell *matHeaderCellDef> Numero de cuotas </th>
+        <td mat-cell *matCellDef="let element"> {{element.installments}} </td>
+      </ng-container>
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="installment">
+        <th mat-header-cell *matHeaderCellDef> Total Cuota </th>
+        <td mat-cell *matCellDef="let element"> {{getTotalInstallment(element) | currency:'COP'}} </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsLoans"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsLoans;"></tr>
+    </table>
+    <h3 class="total-result">Total aportes por prestamos: <span>{{getTotalInstallments() | currency:'COP'}}</span></h3>
+  </div>
+  <br>
+  <div>
+    <h2 class="total-result">Total aportes del mes: <span>{{getTotalContributions()+getTotalInstallments() | currency:'COP'}}</span></h2>
+  </div>
+</mat-expansion-panel>

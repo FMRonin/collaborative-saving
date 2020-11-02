@@ -1,6 +1,6 @@
 export interface Loan {
     type:string,
-    interest:number,
+    rate:number,
     balance:number, 
     installments:string,
     fee:number
