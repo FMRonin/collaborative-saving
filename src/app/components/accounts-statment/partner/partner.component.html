@@ -3,7 +3,7 @@
       <mat-panel-title>
         <span class="partner-title">{{partner.id}} - {{partner.name | titlecase}}</span>
         <span class="partner-spacer"></span>
-        <span class="total-result">Aportes del mes: <span>{{partner.collection | currency:'COP'}}</span></span>
+        <span class="total-result">Aportes del mes: <span>{{partner.collection | number:'':'en-US'}}</span></span>
       </mat-panel-title>
   </mat-expansion-panel-header>
   <div class="participation-table" *ngIf="participations!=null">
@@ -28,19 +28,37 @@
       <!-- Value Column -->
       <ng-container matColumnDef="unitContribution">
         <th mat-header-cell *matHeaderCellDef> Aporte por accion </th>
-        <td mat-cell *matCellDef="let element"> {{element.unitContribution | currency:'COP'}} </td>
+        <td mat-cell *matCellDef="let element"> 
+          <span>$&nbsp;</span>{{element.unitContribution | number:'':'en-US'}}
+        </td>
       </ng-container>
   
       <!-- Value Column -->
       <ng-container matColumnDef="totalContribution">
         <th mat-header-cell *matHeaderCellDef> Total aporte </th>
-        <td mat-cell *matCellDef="let element"> {{ getTotalContribution(element) | currency:'COP'}} </td>
+        <td mat-cell *matCellDef="let element; let i = index">
+          <mat-form-field appearance="fill">
+            <input matInput (input)="transformAmount($event)"
+            (blur)="updateTotalAmountParticipation(i,$event)" [disabled]="!editable[i]"
+            [ngModel]="element.totalAmount | number:'':'en-US'">
+            <span matPrefix>$&nbsp;</span>
+            <button mat-icon-button matSuffix (click)="editable[i]=!editable[i]">
+              <mat-icon>{{editable[i] ? 'lock_open' : 'lock'}}</mat-icon>
+            </button>
+          </mat-form-field>
+        </td>
       </ng-container>
+
+      <!-- Value Column -->
+      <!--ng-container matColumnDef="totalContribution">
+        <th mat-header-cell *matHeaderCellDef> Total aporte </th>
+        <td mat-cell *matCellDef="let element"> {{ getTotalContribution(element) | number:'':'en-US'}} </td>
+      </ng-container-->
     
       <tr mat-header-row *matHeaderRowDef="displayedColumnsParticipations"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumnsParticipations;"></tr>
     </table>
-    <h3 class="total-result">Total Aportes por acciones: <span>{{getTotalContributions() | currency:'COP'}}</span></h3>
+    <h3 class="total-result">Total Aportes por acciones: <span> <span>$&nbsp;</span> {{getTotalContributions() | number:'':'en-US'}}</span></h3>
   </div>
   <div class="loan-table" *ngIf="loans!=null">
     <br>
@@ -65,19 +83,19 @@
       <!-- Symbol Column -->
       <ng-container matColumnDef="balance">
         <th mat-header-cell *matHeaderCellDef> Saldo Prestamo </th>
-        <td mat-cell *matCellDef="let element"> {{element.balance | currency:'COP'}} </td>
+        <td mat-cell *matCellDef="let element"> <span>$&nbsp;</span> {{element.balance | number:'':'en-US'}} </td>
       </ng-container>
     
       <!-- Name Column -->
       <ng-container matColumnDef="interest">
         <th mat-header-cell *matHeaderCellDef> Intereses </th>
-        <td mat-cell *matCellDef="let element"> {{getInsterests(element) | currency:'COP'}} </td>
+        <td mat-cell *matCellDef="let element"> <span>$&nbsp;</span> {{getInsterests(element) | number:'':'en-US'}} </td>
       </ng-container>
     
       <!-- Name Column -->
       <ng-container matColumnDef="fee">
         <th mat-header-cell *matHeaderCellDef> Cuota Minima </th>
-        <td mat-cell *matCellDef="let element"> {{element.fee | currency:'COP'}} </td>
+        <td mat-cell *matCellDef="let element"> <span>$&nbsp;</span>  {{element.fee | number:'':'en-US'}} </td>
       </ng-container>
   
       <!-- Type Column -->
@@ -89,16 +107,26 @@
       <!-- Name Column -->
       <ng-container matColumnDef="installment">
         <th mat-header-cell *matHeaderCellDef> Total Cuota </th>
-        <td mat-cell *matCellDef="let element"> {{getTotalInstallment(element) | currency:'COP'}} </td>
+        <td mat-cell *matCellDef="let element; let i = index">
+          <mat-form-field appearance="fill">
+            <input matInput (input)="transformAmount($event)"
+            (blur)="updateTotalAmountLoan(i,$event)" [disabled]="!editable[i]"
+            [ngModel]="element.totalAmount | number:'':'en-US'">
+            <span matPrefix>$&nbsp;</span>
+            <button mat-icon-button matSuffix (click)="editable[i]=!editable[i]">
+              <mat-icon>{{editable[i] ? 'lock_open' : 'lock'}}</mat-icon>
+            </button>
+          </mat-form-field>
+        </td>
       </ng-container>
     
       <tr mat-header-row *matHeaderRowDef="displayedColumnsLoans"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumnsLoans;"></tr>
     </table>
-    <h3 class="total-result">Total aportes por prestamos: <span>{{getTotalInstallments() | currency:'COP'}}</span></h3>
+    <h3 class="total-result">Total aportes por prestamos: <span> <span>$&nbsp;</span> {{getTotalInstallments() | number:'':'en-US'}}</span></h3>
   </div>
   <br>
   <div>
-    <h2 class="total-result">Total aportes del mes: <span>{{getTotalContributions()+getTotalInstallments() | currency:'COP'}}</span></h2>
+    <h2 class="total-result">Total aportes del mes: <span> <span>$&nbsp;</span> {{getTotalContributions()+getTotalInstallments() | number:'':'en-US'}}</span></h2>
   </div>
 </mat-expansion-panel>

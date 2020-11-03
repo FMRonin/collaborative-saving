@@ -1,5 +1,6 @@
 export interface Participation {
     name:string,
     cnt:number,
-    unitContribution:number
+    unitContribution:number,
+    totalAmount?:number
 }

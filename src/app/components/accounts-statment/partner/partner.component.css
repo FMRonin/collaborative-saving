@@ -38,3 +38,7 @@ table {
 .selected-partner{
     background-color: #cda3ff;
 }
+
+.amount-text-filed {
+    text-align: right;
+}

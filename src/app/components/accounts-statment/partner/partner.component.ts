@@ -1,19 +1,23 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, NgModuleRef, OnInit } from '@angular/core';
 import { Partner } from 'src/app/interfaces/partner';
 import { ParticipationsService } from 'src/app/services/participations.service';
 import { Participation } from 'src/app/interfaces/participation';
 import { LoansService } from 'src/app/services/loans.service';
 import { Loan } from 'src/app/interfaces/loan';
+import { DecimalPipe } from "@angular/common";
 
 @Component({
   selector: 'app-partner',
   templateUrl: './partner.component.html',
   styleUrls: ['./partner.component.css']
 })
-export class PartnerComponent implements OnInit {
+export class PartnerComponent {
 
 
   @Input() partner:Partner;
+
+  editable:boolean[]=[];
+  
   
   participations:Participation[];
   displayedColumnsParticipations: string[] = ['name', 'cnt', 'unitContribution','totalContribution'];
@@ -24,10 +28,15 @@ export class PartnerComponent implements OnInit {
   
   constructor(
     private _participationService:ParticipationsService, 
-    private _loansService:LoansService) {
+    private _loansService:LoansService,
+    private _amountPipe:DecimalPipe) {
     }
-  
-  ngOnInit(): void {
+
+  transformAmount(elementDOM){
+    let str = elementDOM.target.value
+    let matches = str.match(/([\d]*,?)*[\d]\.?[\d]*/g);
+    str = (matches != null )?matches[0].replace(/,/gi,''):0;
+    elementDOM.target.value = this._amountPipe.transform(str,'','en-US');
   }
 
   getPartnerInformation(){
@@ -51,7 +60,10 @@ export class PartnerComponent implements OnInit {
   }
 
   getTotalInstallment(loan:Loan){
-    return (this.getInsterests(loan)+loan.fee);
+    if(loan.totalAmount>=0)
+      return loan.totalAmount
+    loan.totalAmount=this.getInsterests(loan)+loan.fee;
+    return loan.totalAmount;
   }
 
   getTotalInstallments(){
@@ -64,7 +76,10 @@ export class PartnerComponent implements OnInit {
   }
 
   getTotalContribution(partisipation:Participation){
-    return (partisipation.cnt*partisipation.unitContribution);
+    if(partisipation.totalAmount>=0)
+      return partisipation.totalAmount
+    partisipation.totalAmount=partisipation.cnt*partisipation.unitContribution;
+    return partisipation.totalAmount;
   }
 
   getTotalContributions(){
@@ -74,5 +89,17 @@ export class PartnerComponent implements OnInit {
       totalContributions+=this.getTotalContribution(participation);
     })
     return totalContributions;
+  }
+
+  updateTotalAmountParticipation(index,eventDOM){
+    let str:string = eventDOM.target.value;
+    let value:number = parseFloat(str.replace(/,/gi,''));
+    this.participations[index].totalAmount=value;
+  }
+
+  updateTotalAmountLoan(index,eventDOM){
+    let str:string = eventDOM.target.value;
+    let value:number = parseFloat(str.replace(/,/gi,''));
+    this.loans[index].totalAmount=value;
   }
 }

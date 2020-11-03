@@ -12,13 +12,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MemberStatePipe } from './pipes/member-state.pipe';
 import { LoanStatePipe } from './pipes/loan-state.pipe';
+import { DecimalPipe } from "@angular/common";
 
 import { AccountsStatmentComponent } from './components/accounts-statment/accounts-statment.component';
 import { FundInformationComponent } from './components/fund-information/fund-information.component';
 import { MoneyCollectionComponent } from './components/money-collection/money-collection.component';
 import { PartnerComponent } from './components/accounts-statment/partner/partner.component';
 import { MainComponent } from './components/main/main.component';
-
 
 @NgModule({
   declarations: [
@@ -29,7 +29,7 @@ import { MainComponent } from './components/main/main.component';
     FundInformationComponent,
     MoneyCollectionComponent,
     PartnerComponent,
-    MainComponent,
+    MainComponent
   ],
   imports: [
     MaterialModule,
@@ -41,7 +41,9 @@ import { MainComponent } from './components/main/main.component';
     FlexLayoutModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    DecimalPipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

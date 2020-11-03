@@ -3,5 +3,6 @@ export interface Loan {
     rate:number,
     balance:number, 
     installments:string,
-    fee:number
+    fee:number,
+    totalAmount?:number
 }
