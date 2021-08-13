@@ -19,6 +19,8 @@ import { FundInformationComponent } from './components/fund-information/fund-inf
 import { MoneyCollectionComponent } from './components/money-collection/money-collection.component';
 import { PartnerComponent } from './components/accounts-statment/partner/partner.component';
 import { MainComponent } from './components/main/main.component';
+import { PartnerParticipationComponent } from './components/accounts-statment/partner/partner-participation/partner-participation.component';
+import { PartnerLoansComponent } from './components/accounts-statment/partner/partner-loans/partner-loans.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { MainComponent } from './components/main/main.component';
     FundInformationComponent,
     MoneyCollectionComponent,
     PartnerComponent,
-    MainComponent
+    MainComponent,
+    PartnerParticipationComponent,
+    PartnerLoansComponent
   ],
   imports: [
     MaterialModule,

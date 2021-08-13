@@ -22,4 +22,8 @@ export class AccountsStatmentComponent implements OnInit {
     })
   }
 
+  updateCollection(event,i){
+    this.partners[i].collection = parseFloat(event);
+  }
+
 }

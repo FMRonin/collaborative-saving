@@ -1,0 +1,44 @@
+.partner-name{
+    margin: 10px 20px;
+    font-size: 23px;
+}
+
+table {
+    width: 100%;
+  }
+
+.expansion-panel{
+    margin: 10px 20px;
+}
+
+.partner-spacer {
+    flex: 1 1 auto;
+}
+
+.partner-title{
+    font-weight: bold;
+}
+
+.total-result{
+    float:right;
+}
+
+.total-result span{
+    color:darkred
+}
+
+.list-parners{
+    padding: 20px;
+}
+
+.content-partner{
+    height: 90vh;
+}
+
+.selected-partner{
+    background-color: #cda3ff;
+}
+
+.amount-text-filed {
+    text-align: right;
+}

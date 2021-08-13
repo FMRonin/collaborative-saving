@@ -3,11 +3,13 @@
     height: 100%;
 }
 .menu-icon {
-    padding: 0 14px;
+    padding-right: 10px;
+    margin-top: 10px;
 }
   
 .header-spacer {
     flex: 1 1 auto;
+    height: 20%;
 }
 .sidebar-menu{
     width: 200px;
@@ -16,3 +18,20 @@
 .header-sidenav a{
     text-align: left;
 }
+
+mat-sidenav-container {
+    position: absolute;
+    top: 0;
+    padding-top: 50px;
+}
+mat-sidenav{
+    padding-top: 50px;
+}
+
+mat-toolbar{
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    height: 50px;
+}
+

@@ -1,16 +1,17 @@
 <mat-toolbar color="primary">
-    <div fxShow="true" fxHide.gt-sm="true">
-      <a (click)="sidenav.toggle()" class="menu-icon"><mat-icon>menu</mat-icon></a>
-    </div>
-    <span class="txt-logo">Fondo Amigos</span>
-    <span class="header-spacer"></span>
-    <div fxShow="true" fxHide.lt-md="true">
-        <a mat-button [routerLink]="['accounts-statment']" routerLinkActive="item-selected">Cuentas de Socios</a>
-        <a mat-button [routerLink]="['fund-information']" routerLinkActive="item-selected">Datos del Fondo</a>
-        <a mat-button [routerLink]="['money-collection']" routerLinkActive="item-selected">Recaudo</a>
-        <span class="toolbar-spacer"></span>
-        <a mat-button href="#"><mat-icon>settings</mat-icon></a>
-    </div> 
+  <div fxShow="true" fxHide.gt-sm="true" class="menu-icon">
+    <a (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></a>
+  </div>
+  <span fxShow="true" class="header-spacer" fxHide.gt-sm="true" ></span>
+  <span class="txt-logo">Fondo Amigos</span>
+  <span class="header-spacer"></span>
+  <div fxShow="true" fxHide.lt-md="true">
+      <a mat-button [routerLink]="['accounts-statment']" routerLinkActive="item-selected">Cuentas de Socios</a>
+      <a mat-button [routerLink]="['fund-information']" routerLinkActive="item-selected">Datos del Fondo</a>
+      <a mat-button [routerLink]="['money-collection']" routerLinkActive="item-selected">Recaudo</a>
+      <span class="toolbar-spacer"></span>
+      <a mat-button href="#"><mat-icon>settings</mat-icon></a>
+  </div> 
 </mat-toolbar>
 <mat-sidenav-container fxFlexFill>
     <mat-sidenav #sidenav fxLayout="column">
@@ -22,7 +23,7 @@
         <a mat-button (click)="sidenav.toggle()" href="#"><mat-icon>settings</mat-icon></a>
       </div>
     </mat-sidenav>
-    <mat-sidenav-content fxFlexFill>
+    <mat-sidenav-content>
       <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>
